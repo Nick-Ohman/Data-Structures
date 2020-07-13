@@ -60,23 +60,18 @@ class LinkedList:
         return val
 
     def remove_tail(self):
-        # if we have an empty linked list 
-        if self.head is None and self.tail is None:
+        if self.head is None:
             return
-        # if we have a non-empty linked list 
-        # we have to start at the head and move down the linked list 
-        # until we get to the node right before the tail 
-        # iterate over our linked list 
-        current = self.head 
 
-        while current.get_next() is not self.tail:
+        current = self.head
+
+        while current.get_next() and current.get_next() is not self.tail:
             current = current.get_next()
-        # at this point, `current` is the node right before the tail 
-        # set the tail to be None
-        val = self.tail.get_value() 
-        # move self.tail to the Node right before
+
+        value = self.tail.get_value()
         self.tail = current
-        return val
+        self.tail.set_next(None)
+        return value
 
     def contains(self, value):
         if not self.head:

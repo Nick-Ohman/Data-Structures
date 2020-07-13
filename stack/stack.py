@@ -16,21 +16,25 @@ from linked_list import *
 class Stack:
     def __init__(self):
         self.size = 0
-        self.storage = []
+        self.head = None
+        self.tale = None
+        self.storage = LinkedList()
 
     def __len__(self):
         return self.size
 
     def push(self, value):
-        self.storage.append(value)
+        self.storage.add_to_tail(value)
+        self.size += 1
+
         
     def pop(self):
         if self.size == 0:
             return None
         else:
-            item = self.storage.pop()
+            item = self.storage.remove_tail()
+            self.size -= 1
             return item
-
 
 
 
