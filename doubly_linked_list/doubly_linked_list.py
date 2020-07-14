@@ -119,7 +119,7 @@ class DoublyLinkedList:
     order of the other elements of the List.
     """
     def delete(self, node):
-          if node is None:
+        if node is None:
             return
         elif self.tail == node:
             self.remove_from_tail()
