@@ -17,21 +17,65 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+ 
+        if value < self.value:
+            if self.left is None:
+                self.left = BSTNode(value)
+            else:
+                self.left.insert(value)
+        if value > self.value:
+            if self.right is None:
+                self.right = BSTNode(value)
+            else:
+                self.left.insert(value)
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        if self.value == target:
+            return True
+        if target < self.value:
+            if self.left is None:
+                return False
+            else:
+                return self.left.contains(target)
+        else:
+            if self.right is None:
+                return False
+            else:
+                return self.right.contains(target)
+
+
+        
+
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        ## how do i keep going right to get 15?
+        # res = self
+        # rres = get_max(root.right)
+        # if (rres > res):  
+        #     res = rres  
+        # return res
+        if self.right:
+            return self.right.get_max()
+        else:
+            return self.value
 
+
+
+        # find the max value in the tree
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
-
+       ## we need to hit ever node
+        fn(self.value)
+        #left
+        if self.left:
+           self.left.for_each(fn)
+        #right
+        if self.right:
+            self.right.for_each(fn)
+        # 
     # Part 2 -----------------------
 
     # Print all the values in order from low to high
@@ -59,3 +103,5 @@ class BSTNode:
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
         pass
+
+root = BSTNode(26)
